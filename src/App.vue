@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import en from 'element-plus/lib/locale/lang/en'
-const language = ref('zh-cn')
-const locale = computed(() => (language.value === 'zh-cn' ? zhCn : en))
+import useLocale from './hooks/locale'
 
-// const toggle = () => {
-//   language.value = language.value === 'zh-cn' ? 'en' : 'zh-cn'
-// }
+const { currentLocale } = useLocale()
+const locale = computed(() => currentLocale.value === 'zh-CN' ? zhCn : en)
 </script>
 
 <template>

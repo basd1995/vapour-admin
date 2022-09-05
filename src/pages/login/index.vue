@@ -1,12 +1,13 @@
 <script setup lang='ts'>
 import Banner from './components/banner.vue'
-
+import useLocale from '~/hooks/locale'
+const { changeLocale } = useLocale()
 const languageList = ref([
   { label: '中文', value: 'zh-CN' },
   { label: 'English', value: 'en-US' },
 ])
 const changeLanguage = (command: string | number | object) => {
-
+  changeLocale(command as string)
 }
 </script>
 

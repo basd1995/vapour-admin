@@ -9,7 +9,6 @@ const form = reactive({
 
 <template>
   <div class="login-form-wrapper">
-    <el-table mb-1 :data="[]" />
     <div class="login-form-title">
       {{ $t('login.form.title') }}
     </div>
