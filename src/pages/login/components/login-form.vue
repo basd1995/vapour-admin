@@ -1,5 +1,8 @@
 <script setup lang='ts'>
 import { useI18n } from 'vue-i18n'
+import IconEpUser from '~icons/ep/user'
+import IconEpKey from '~icons/ep/key'
+
 const { t } = useI18n()
 const form = reactive({
   username: '',
@@ -23,9 +26,7 @@ const form = reactive({
           :placeholder="t('login.form.userName.placeholder')"
         >
           <template #prefix>
-            <el-icon>
-              <div i-ep-user />
-            </el-icon>
+            <IconEpUser />
           </template>
         </el-input>
       </el-form-item>
@@ -36,9 +37,7 @@ const form = reactive({
           type="password"
         >
           <template #prefix>
-            <el-icon>
-              <div i-ep-key />
-            </el-icon>
+            <IconEpKey />
           </template>
         </el-input>
       </el-form-item>

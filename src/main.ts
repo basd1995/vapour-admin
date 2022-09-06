@@ -6,7 +6,6 @@ import store from './store'
 import i18n from './locale'
 import 'element-plus/dist/index.css'
 import './style.css'
-import 'uno.css'
 
 const app = createApp(App)
 
