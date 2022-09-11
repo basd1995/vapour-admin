@@ -1,13 +1,34 @@
 <script setup lang='ts'>
+import type { FormInstance, FormRules } from 'element-plus'
 import { useI18n } from 'vue-i18n'
-import IconEpUser from '~icons/ep/user'
-import IconEpKey from '~icons/ep/key'
-
+const router = useRouter()
 const { t } = useI18n()
+const formRef = ref<FormInstance>()
 const form = reactive({
   username: '',
   password: '',
 })
+const rules = reactive<FormRules>({
+  username: [
+    { required: true, message: '请输入账号', trigger: 'blur' },
+  ],
+  password: [
+    { required: true, message: '请输入密码', trigger: 'blur' },
+  ],
+})
+const submitLogin = async (formEl: FormInstance | undefined) => {
+  if (!formEl)
+    return
+  await formEl.validate((valid, fields) => {
+    console.error(valid)
+    if (valid) {
+      console.error('submit!', fields)
+      router.push('/dashboard')
+    }
+
+    else { console.error('error submit!', fields) }
+  })
+}
 </script>
 
 <template>
@@ -19,25 +40,25 @@ const form = reactive({
       {{ $t('login.form.subTitle') }}
     </div>
     <div class="login-form-error-msg" />
-    <el-form :mode="form">
-      <el-form-item>
+    <el-form ref="formRef" :model="form" :rules="rules">
+      <el-form-item prop="username">
         <el-input
           v-model="form.username"
           :placeholder="t('login.form.userName.placeholder')"
         >
           <template #prefix>
-            <IconEpUser />
+            <icon-ep-user />
           </template>
         </el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item prop="password">
         <el-input
           v-model="form.password"
           :placeholder="t('login.form.password.placeholder')"
           type="password"
         >
           <template #prefix>
-            <IconEpKey />
+            <icon-ep-key />
           </template>
         </el-input>
       </el-form-item>
@@ -48,7 +69,7 @@ const form = reactive({
             {{ $t('login.form.forgetPassword') }}
           </el-button>
         </div>
-        <el-button type="primary" html-type="submit">
+        <el-button type="primary" @click="submitLogin(formRef)">
           {{ $t('login.form.login') }}
         </el-button>
         <el-button link long class="login-form-register-btn">

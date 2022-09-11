@@ -5,6 +5,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,14 +35,20 @@ export default defineConfig({
       dts: true,
       dirs: [
         'src/components',
-        'src/pages',
+        'src/views',
       ],
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ElementPlusResolver(),
+        IconsResolver({
+          prefix: 'icon',
+        }),
+      ],
     }),
     Icons({
       // experimental
       // compiler: 'vue3',
       autoInstall: true,
     }),
+
   ],
 })

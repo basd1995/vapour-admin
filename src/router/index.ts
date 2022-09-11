@@ -4,6 +4,7 @@ import {
   createWebHashHistory,
   createWebHistory,
 } from 'vue-router'
+import PageLayout from '~/layout/page-layout.vue'
 
 const publicRoutes = [
   {
@@ -13,7 +14,24 @@ const publicRoutes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('~/pages/login/index.vue'),
+    component: () => import('~/views/login/index.vue'),
+  },
+  {
+    name: 'root',
+    path: '/',
+    component: PageLayout,
+    children: [
+      {
+        path: 'dashboard',
+        name: 'dashboard',
+        component: () => import('~/views/dashboard/index.vue'),
+        meta: {
+          locale: 'menu.dashboard',
+          requiresAuth: true,
+          icon: 'icon-dashboard',
+        },
+      },
+    ],
   },
 ]
 
