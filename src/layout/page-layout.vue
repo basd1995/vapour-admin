@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+import Navbar from './components/Navbar.vue'
 import Menu from '~/components/Menu.vue'
 </script>
 
@@ -8,7 +9,9 @@ import Menu from '~/components/Menu.vue'
       <Menu />
     </el-aside>
     <el-container>
-      <el-header>Header</el-header>
+      <el-header class="layout-header">
+        <Navbar />
+      </el-header>
       <el-main>Main</el-main>
       <el-footer>Footer</el-footer>
     </el-container>
@@ -23,5 +26,9 @@ import Menu from '~/components/Menu.vue'
 .layout-aside {
   background: #000;
   height: 100%;
+  overflow-y: scroll;
+}
+.layout-header {
+  padding: 0;
 }
 </style>

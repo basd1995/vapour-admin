@@ -21,12 +21,10 @@ const submitLogin = async (formEl: FormInstance | undefined) => {
     return
   await formEl.validate((valid, fields) => {
     console.error(valid)
-    if (valid) {
-      console.error('submit!', fields)
+    if (valid)
       router.push('/dashboard')
-    }
-
-    else { console.error('error submit!', fields) }
+    else
+      console.error('error submit!', fields)
   })
 }
 </script>

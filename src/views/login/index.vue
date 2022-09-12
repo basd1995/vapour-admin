@@ -26,7 +26,7 @@ const changeLanguage = (command: string | number | object) => {
     <div class="content">
       <div class="language">
         <el-dropdown @command="changeLanguage">
-          <div i-ant-design-translation-outlined />
+          <icon-ant-design-translation-outlined />
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item
@@ -71,6 +71,7 @@ const changeLanguage = (command: string | number | object) => {
     position: absolute;
     top: 20px;
     right: 60px;
+    z-index: 1;
   }
 
   .footer {
