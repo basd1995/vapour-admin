@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+import Language from '~/components/Language.vue'
 // import { useI18n } from 'vue-i18n'
 
 const squareUrl = 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png'
@@ -7,6 +8,7 @@ const squareUrl = 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dp
 
 <template>
   <div class="navbar">
+    <Language :size="1.2" />
     <el-dropdown>
       <el-avatar shape="square" size="default" :src="squareUrl" />
       <template #dropdown>
@@ -24,7 +26,7 @@ const squareUrl = 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dp
 .navbar {
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
+  justify-content: flex-end;
   width: 100%;
   height: 100%;
   padding: 0 20px;

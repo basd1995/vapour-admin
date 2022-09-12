@@ -40,6 +40,7 @@ declare module '@vue/runtime-core' {
     IconAntDesignTranslationOutlined: typeof import('~icons/ant-design/translation-outlined')['default']
     IconEpKey: typeof import('~icons/ep/key')['default']
     IconEpUser: typeof import('~icons/ep/user')['default']
+    Language: typeof import('./src/components/Language.vue')['default']
     Login: typeof import('./src/views/login/index.vue')['default']
     LoginForm: typeof import('./src/views/login/components/login-form.vue')['default']
     Menu: typeof import('./src/components/Menu.vue')['default']
