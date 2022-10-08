@@ -1,12 +1,22 @@
 <script setup lang='ts'>
 import Navbar from './components/Navbar.vue'
-import Menu from '~/components/Menu.vue'
+import Menus from '~/components/Menus.vue'
+import { menuRes } from '~/mock/menu'
+const menu = ref<any>([])
+const getMenu = () => {
+  const res = menuRes
+  if (res.code === 200)
+    menu.value = res.data[0].children
+}
+getMenu()
 </script>
 
 <template>
   <el-container class="layout">
     <el-aside class="layout-aside">
-      <Menu />
+      <el-menu>
+        <Menus :menus="menu" />
+      </el-menu>
     </el-aside>
     <el-container>
       <el-header class="layout-header">
