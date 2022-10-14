@@ -1,35 +1,46 @@
 <script setup lang='ts'>
 import Language from '~/components/Language.vue'
-// import { useI18n } from 'vue-i18n'
-
-const squareUrl = 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png'
-// const { t } = useI18n()
+import useAppStore from '~/store/modules/app'
+const appStore = useAppStore()
 </script>
 
 <template>
-  <div class="navbar">
-    <Language :size="1.2" />
-    <el-dropdown>
-      <el-avatar shape="square" size="default" :src="squareUrl" />
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item>{{ $t('navbar.dropdown.userProfile') }}</el-dropdown-item>
-          <el-dropdown-item>{{ $t('navbar.dropdown.accountSetting') }}</el-dropdown-item>
-          <el-dropdown-item>{{ $t('navbar.dropdown.signOut') }}</el-dropdown-item>
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
+  <div class="vp-navbar">
+    <div class="vp-collapse" @click="appStore.setMenuIsCollapse()">
+      <icon-ep-fold v-if="appStore.getMenuIsCollapse" />
+      <icon-ep-expand v-else />
+    </div>
+    <div class="vp-tool">
+      <Language :size="1.2" />
+      <el-dropdown>
+        <el-avatar shape="square" size="small">
+          曹
+        </el-avatar>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item>{{ $t('navbar.dropdown.userProfile') }}</el-dropdown-item>
+            <el-dropdown-item>{{ $t('navbar.dropdown.accountSetting') }}</el-dropdown-item>
+            <el-dropdown-item>{{ $t('navbar.dropdown.signOut') }}</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.navbar {
+.vp-navbar {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
   padding: 0 20px;
-  background-color: aliceblue;
+  background-color: #ffffff;
+  .vp-collapse, .vp-tool {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
 }
 </style>

@@ -1,44 +1,50 @@
 <script setup lang='ts'>
 import Navbar from './components/Navbar.vue'
-import Menus from '~/components/Menus.vue'
-import { menuRes } from '~/mock/menu'
-const menu = ref<any>([])
-const getMenu = () => {
-  const res = menuRes
-  if (res.code === 200)
-    menu.value = res.data[0].children
-}
-getMenu()
+import SideBar from './components/SideBar.vue'
+import AppMain from './components/AppMain.vue'
+import useAppStore from '~/store/modules/app'
+import useThemeStore from '~/store/modules/theme'
+const appStore = useAppStore()
+const themeStore = useThemeStore()
 </script>
 
 <template>
-  <el-container class="layout">
-    <el-aside class="layout-aside">
-      <el-menu>
-        <Menus :menus="menu" />
-      </el-menu>
+  <el-container class="vp-layout">
+    <el-aside
+      class="vp-layout-aside"
+      :style="{ backgroundColor: themeStore.getSideBarTheme.menuBg }"
+      :class="appStore.getMenuIsCollapse ? 'hidden-aside' : ''"
+    >
+      <SideBar />
     </el-aside>
     <el-container>
-      <el-header class="layout-header">
+      <el-header class="vp-layout-header">
         <Navbar />
       </el-header>
-      <el-main>Main</el-main>
+      <el-main>
+        <AppMain />
+      </el-main>
       <el-footer>Footer</el-footer>
     </el-container>
   </el-container>
 </template>
 
 <style lang="scss" scoped>
-.layout {
+.vp-layout {
   width: 100%;
   height: 100%;
-}
-.layout-aside {
-  background: #000;
-  height: 100%;
-  overflow-y: scroll;
-}
-.layout-header {
-  padding: 0;
+  .vp-layout-aside {
+    width: 200px;
+    height: 100%;
+    transition: width 0.4s;
+  }
+  .hidden-aside {
+    width: 64px;
+    transition: width 0.4s;
+  }
+  .vp-layout-header {
+    padding: 0;
+    border-bottom: 1px solid #eee;
+  }
 }
 </style>

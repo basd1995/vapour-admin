@@ -1,4 +1,5 @@
 export default {
+  'app.name': 'Vapour',
   'login.form.title': 'Login to Vapour-admin',
   'login.form.subTitle': 'Login to Vapour-admin',
   'login.form.userName.errMsg': 'Username cannot be empty',

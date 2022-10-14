@@ -1,4 +1,5 @@
 export default {
+  'app.name': '蒸汽',
   'login.form.title': '登录 Vapour-admin',
   'login.form.subTitle': '登录 Vapour-admin',
   'login.form.userName.errMsg': '用户名不能为空',

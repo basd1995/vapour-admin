@@ -13,14 +13,14 @@ const hasChildren = (item: any) => {
       <el-icon v-if="item.meta.icon">
         <component :is="item.meta.icon" />
       </el-icon>
-      {{ item.meta.title }}
+      <span>{{ item.meta.title }}</span>
     </el-menu-item>
     <el-sub-menu v-else :index="item.id">
       <template #title>
         <el-icon v-if="item.meta.icon">
           <component :is="item.meta.icon" />
         </el-icon>
-        {{ item.meta.title }}
+        <span>{{ item.meta.title }}</span>
       </template>
       <Menus :menus="item.children" />
     </el-sub-menu>
