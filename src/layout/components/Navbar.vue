@@ -7,8 +7,8 @@ const appStore = useAppStore()
 <template>
   <div class="vp-navbar">
     <div class="vp-collapse" @click="appStore.setMenuIsCollapse()">
-      <icon-ep-fold v-if="appStore.getMenuIsCollapse" />
-      <icon-ep-expand v-else />
+      <icon-ep-expand v-if="appStore.getMenuIsCollapse" />
+      <icon-ep-fold v-else />
     </div>
     <div class="vp-tool">
       <Language :size="1.2" />
