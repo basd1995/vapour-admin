@@ -11,7 +11,7 @@ const menu = ref<any>([])
 const getMenu = async () => {
   const data = await menuApi.menuTree()
   console.error('res', data)
-  menu.value = data[1].children
+  menu.value = data[0].children
 }
 getMenu()
 </script>

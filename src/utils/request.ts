@@ -24,6 +24,9 @@ httpClient.interceptors.response.use((response: AxiosResponse) => {
     ElMessage.error(data.msg)
     return Promise.reject(data)
   }
+  else {
+    ElMessage.success(data.msg)
+  }
   return Promise.resolve(data.data)
 }, (error: any) => {
   return Promise.reject(error)
