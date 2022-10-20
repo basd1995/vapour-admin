@@ -1,31 +1,49 @@
 <script setup lang='ts'>
 import type { FormInstance, FormRules } from 'element-plus'
 import { useI18n } from 'vue-i18n'
-const router = useRouter()
+import loginApi from '~/api/auth/login-api'
+import sysApi from '~/api/sys/user-center-api'
+import { setItem } from '~/utils/storage'
+
+// const router = useRouter()
 const { t } = useI18n()
+
+// form表单数据
 const formRef = ref<FormInstance>()
-const form = reactive({
-  username: '',
-  password: '',
-})
+const form = reactive({ username: '', password: '' })
+
+// 校验规则
 const rules = reactive<FormRules>({
-  username: [
-    { required: true, message: '请输入账号', trigger: 'blur' },
-  ],
-  password: [
-    { required: true, message: '请输入密码', trigger: 'blur' },
-  ],
+  username: [{ required: true, message: '请输入账号', trigger: 'blur' }],
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
 })
-const submitLogin = async (formEl: FormInstance | undefined) => {
-  if (!formEl)
+
+const loginLoading = ref(false)
+
+const submitLogin = async () => {
+  // 表单校验
+  const validate = await formRef.value!.validate().catch(() => {})
+  if (!validate)
     return
-  await formEl.validate((valid, fields) => {
-    console.error(valid)
-    if (valid)
-      router.push('/dashboard')
-    else
-      console.error('error submit!', fields)
-  })
+
+  loginLoading.value = true
+
+  // 提交表单
+  const loginData = { ...form, validCode: '', validCodeReqNo: '' }
+
+  // 获取token
+  const token = await loginApi.login(loginData).finally(() => loginLoading.value = false)
+  setItem('TOKEN', token)
+
+  // 获取登录的用户信息
+  const loginUser = await loginApi.getLoginUser().finally(() => loginLoading.value = false)
+  setItem('USER_INFO', loginUser)
+
+  // 设置用户菜单
+  const menu = await sysApi.userLoginMenu().finally(() => loginLoading.value = false)
+  setItem('MENU', menu)
+
+  // router.push({ path: '/dashboard' })
 }
 </script>
 
@@ -67,7 +85,7 @@ const submitLogin = async (formEl: FormInstance | undefined) => {
             {{ $t('login.form.forgetPassword') }}
           </el-button>
         </div>
-        <el-button type="primary" @click="submitLogin(formRef)">
+        <el-button type="primary" :loading="loginLoading" @click="submitLogin">
           {{ $t('login.form.login') }}
         </el-button>
         <el-button link long class="login-form-register-btn">

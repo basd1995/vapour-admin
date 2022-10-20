@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import menuApi from '~/api/sys/menu-api'
+import sysApi from '~/api/sys/user-center-api'
 import Menus from '~/components/Menus.vue'
 import useAppStore from '~/store/modules/app'
 import useThemeStore from '~/store/modules/theme'
@@ -9,7 +9,7 @@ const themeStore = useThemeStore()
 
 const menu = ref<any>([])
 const getMenu = async () => {
-  const data = await menuApi.menuTree()
+  const data = await sysApi.userLoginMenu()
   console.error('res', data)
   menu.value = data[0].children
 }
