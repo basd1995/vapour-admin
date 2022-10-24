@@ -3,6 +3,7 @@ import type { FormInstance, FormRules } from 'element-plus'
 import { useI18n } from 'vue-i18n'
 import loginApi from '~/api/auth/login-api'
 import sysApi from '~/api/sys/user-center-api'
+import router from '~/router'
 import { setItem } from '~/utils/storage'
 
 // const router = useRouter()
@@ -43,7 +44,7 @@ const submitLogin = async () => {
   const menu = await sysApi.userLoginMenu().finally(() => loginLoading.value = false)
   setItem('MENU', menu)
 
-  // router.push({ path: '/dashboard' })
+  router.push({ path: '/dashboard' })
 }
 </script>
 
