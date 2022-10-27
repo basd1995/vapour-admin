@@ -24,7 +24,9 @@ const themeStore = useThemeStore()
       <el-main>
         <AppMain />
       </el-main>
-      <el-footer>Footer</el-footer>
+      <el-footer class="vp-layout-footer">
+        ⓒ Copyright Vapour 2022 Created By Caosong
+      </el-footer>
     </el-container>
   </el-container>
 </template>
@@ -45,6 +47,14 @@ const themeStore = useThemeStore()
   .vp-layout-header {
     padding: 0;
     border-bottom: 1px solid #eee;
+  }
+  .vp-layout-footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666666;
+    font-size: 12px;
   }
 }
 </style>

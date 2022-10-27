@@ -54,7 +54,10 @@ getMenu()
     .vp-name {
       margin-left: 15px;
       font-weight: bold;
+      width: 4em;
+      white-space: nowrap;
       color: #ffffff;
+      transition: all .2s;
     }
   }
   .vp-menu {
