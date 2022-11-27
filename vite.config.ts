@@ -33,10 +33,7 @@ export default defineConfig({
     }),
     Components({
       dts: true,
-      dirs: [
-        'src/components',
-        'src/views',
-      ],
+      dirs: [],
       resolvers: [
         ElementPlusResolver(),
         IconsResolver({

@@ -66,7 +66,7 @@ httpClient.interceptors.response.use((response: AxiosResponse) => {
     return Promise.reject(data)
   }
   if (code !== 200) {
-    ElMessage.error(data.msg)
+    ElMessage('this is a message.')
     return Promise.reject(data)
   }
   else {

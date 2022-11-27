@@ -44,7 +44,7 @@ const submitLogin = async () => {
   const menu = await sysApi.userLoginMenu().finally(() => loginLoading.value = false)
   setItem('MENU', menu)
 
-  router.push({ path: '/dashboard' })
+  router.push({ path: '/app/dashboard' })
 }
 </script>
 

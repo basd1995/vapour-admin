@@ -70,6 +70,11 @@ getMenu()
       width: 200px;
       min-height: 400px;
     }
+    // &:deep(.el-menu-item:hover){
+    //   outline: 0 !important;
+    //   background-color: #409EFF !important;
+    //   color: #fff
+    // }
   }
 }
 </style>

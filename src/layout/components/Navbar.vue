@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import Language from '~/components/Language.vue'
+import NavTool from '~/components/NavTool.vue'
 import useAppStore from '~/store/modules/app'
 const appStore = useAppStore()
 </script>
@@ -10,21 +10,7 @@ const appStore = useAppStore()
       <icon-ep-expand v-if="appStore.getMenuIsCollapse" />
       <icon-ep-fold v-else />
     </div>
-    <div class="vp-tool">
-      <Language :size="1.2" />
-      <el-dropdown>
-        <el-avatar shape="square" size="small">
-          曹
-        </el-avatar>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item>{{ $t('navbar.dropdown.userProfile') }}</el-dropdown-item>
-            <el-dropdown-item>{{ $t('navbar.dropdown.accountSetting') }}</el-dropdown-item>
-            <el-dropdown-item>{{ $t('navbar.dropdown.signOut') }}</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
-    </div>
+    <NavTool class="vp-tool" />
   </div>
 </template>
 

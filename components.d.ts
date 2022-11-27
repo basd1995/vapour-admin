@@ -7,7 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Banner: typeof import('./src/views/login/components/banner.vue')['default']
+    Banner: typeof import('./src/views/login/components/Banner.vue')['default']
     CanvasPanel: typeof import('./src/components/CanvasPanel.vue')['default']
     Card: typeof import('./src/components/Card.vue')['default']
     Dashboard: typeof import('./src/views/dashboard/index.vue')['default']
@@ -17,6 +17,7 @@ declare module '@vue/runtime-core' {
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDivider: typeof import('element-plus/es')['ElDivider']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
@@ -35,6 +36,8 @@ declare module '@vue/runtime-core' {
     ElSpace: typeof import('element-plus/es')['ElSpace']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
+    ElTabPane: typeof import('element-plus/es')['ElTabPane']
+    ElTabs: typeof import('element-plus/es')['ElTabs']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Home: typeof import('./src/views/home.vue')['default']
     IconAntDesignArrowLeftOutlined: typeof import('~icons/ant-design/arrow-left-outlined')['default']
@@ -48,9 +51,10 @@ declare module '@vue/runtime-core' {
     IconEpUser: typeof import('~icons/ep/user')['default']
     Language: typeof import('./src/components/Language.vue')['default']
     Login: typeof import('./src/views/login/index.vue')['default']
-    LoginForm: typeof import('./src/views/login/components/login-form.vue')['default']
+    LoginForm: typeof import('./src/views/login/components/LoginForm.vue')['default']
     Menu: typeof import('./src/components/Menus.vue')['default']
     Menus: typeof import('./src/components/Menus.vue')['default']
+    NavTool: typeof import('./src/components/NavTool.vue')['default']
     OptionPanel: typeof import('./src/components/OptionPanel.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

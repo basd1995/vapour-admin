@@ -17,8 +17,7 @@ const publicRoutes = [
     component: () => import('~/views/login/index.vue'),
   },
   {
-    name: 'root',
-    path: '/',
+    path: '/app',
     component: PageLayout,
     children: [
       {

@@ -1,15 +1,10 @@
 <script setup lang='ts'>
-import useLocale from '~/hooks/locale'
-defineProps<{
-  size?: number
-}>()
-const { changeLocale } = useLocale()
 const languageList = ref([
   { label: '中文', value: 'zh-CN' },
   { label: 'English', value: 'en-US' },
 ])
 const changeLanguage = (command: string | number | object) => {
-  changeLocale(command as string)
+  console.log('command', command)
 }
 </script>
 

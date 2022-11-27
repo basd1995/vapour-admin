@@ -1,6 +1,8 @@
 <script setup lang='ts'>
-import Banner from './components/banner.vue'
+import Banner from './components/Banner.vue'
+import LoginForm from './components/LoginForm.vue'
 import Language from '~/components/Language.vue'
+import Footer from '~/components/Footer.vue'
 </script>
 
 <template>
