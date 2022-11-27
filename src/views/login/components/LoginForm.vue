@@ -11,7 +11,7 @@ const { t } = useI18n()
 
 // form表单数据
 const formRef = ref<FormInstance>()
-const form = reactive({ username: '', password: '' })
+const form = reactive({ username: 'admin', password: 'admin' })
 
 // 校验规则
 const rules = reactive<FormRules>({

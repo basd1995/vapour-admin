@@ -1,5 +1,4 @@
 <script setup lang='ts'>
-import NavTool from '~/components/NavTool.vue'
 import useAppStore from '~/store/modules/app'
 const appStore = useAppStore()
 </script>
@@ -10,7 +9,6 @@ const appStore = useAppStore()
       <icon-ep-expand v-if="appStore.getMenuIsCollapse" />
       <icon-ep-fold v-else />
     </div>
-    <NavTool class="vp-tool" />
   </div>
 </template>
 

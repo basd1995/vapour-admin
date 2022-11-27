@@ -15,7 +15,7 @@ const changeLanguage = (command: string | number | object) => {
 
 <template>
   <el-dropdown @command="changeLanguage">
-    <icon-ant-design-translation-outlined :style="{ width: 20, height: 20 }" />
+    <icon-ant-design-translation-outlined />
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item

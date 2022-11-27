@@ -45,6 +45,7 @@ export default defineConfig({
       // experimental
       // compiler: 'vue3',
       autoInstall: true,
+      defaultClass: 'vap-icon',
     }),
 
   ],
