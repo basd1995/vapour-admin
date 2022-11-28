@@ -1,24 +1,36 @@
-import type { Router } from 'vue-router'
+import type { RouteRecordRaw, Router } from 'vue-router'
 import {
   createRouter,
-  createWebHashHistory,
   createWebHistory,
 } from 'vue-router'
-import PageLayout from '~/layout/page-layout.vue'
 
 const publicRoutes = [
   {
+    path: '/:pathMatch(.*)*',
+    name: 'notFound',
+    component: () => import('~/views/not-found/index.vue'),
+  },
+  {
+    path: '/vapour',
+    name: 'root',
+    redirect: '/vapour/login',
+    component: () => import('~/layout/VapLoginLayout/index.vue'),
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import('~/views/login/index.vue'),
+      },
+      {
+        path: 'register',
+        name: 'register',
+        component: () => import('~/views/register/index.vue'),
+      },
+    ],
+  },
+  {
     path: '/',
-    redirect: '/login',
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('~/views/login/index.vue'),
-  },
-  {
-    path: '/app',
-    component: PageLayout,
+    component: () => import('~/layout/page-layout.vue'),
     children: [
       {
         path: 'dashboard',
@@ -35,11 +47,8 @@ const publicRoutes = [
 ]
 
 const router: Router = createRouter({
-  history:
-    process.env.NODE_ENV === 'production'
-      ? createWebHistory()
-      : createWebHashHistory(),
-  routes: publicRoutes,
+  history: createWebHistory(),
+  routes: publicRoutes as RouteRecordRaw[],
 })
 
 export default router
