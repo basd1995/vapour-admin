@@ -1,20 +1,18 @@
 <script setup lang='ts'>
-import useLocale from '~/hooks/locale'
+import useLanguage from '~/hooks/locale'
+
 defineProps<{
   size?: number
 }>()
-const { changeLocale } = useLocale()
+const { setLanguage } = useLanguage()
 const languageList = ref([
   { label: '中文', value: 'zh-CN' },
   { label: 'English', value: 'en-US' },
 ])
-const changeLanguage = (command: string | number | object) => {
-  changeLocale(command as string)
-}
 </script>
 
 <template>
-  <el-dropdown @command="changeLanguage">
+  <el-dropdown @command="setLanguage">
     <icon-ant-design-translation-outlined />
     <template #dropdown>
       <el-dropdown-menu>

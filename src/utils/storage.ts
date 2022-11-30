@@ -3,11 +3,11 @@
  * @param key
  * @param value
  */
-export const setItem = (key: string, value: string | object) => {
-  if (typeof value === 'object')
+export const setItem = (key: string, value: string | object | number) => {
+  if (typeof value != 'string')
     value = JSON.stringify(value)
 
-  window.localStorage.setItem(key, value)
+  localStorage.setItem(key, value)
 }
 
 /**
@@ -25,16 +25,16 @@ export const getItem = (key: string) => {
 }
 
 /**
- * 清楚对应的localStorage
+ * 清除对应的localStorage
  * @param key
  */
 export const removeItem = (key: string) => {
-  window.localStorage.removeItem(key)
+  localStorage.removeItem(key)
 }
 
 /**
  * 删除localStorage所有数据
  */
 export const removeAllItem = () => {
-  window.localStorage.clear()
+  localStorage.clear()
 }

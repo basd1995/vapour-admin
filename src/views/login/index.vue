@@ -4,10 +4,12 @@ import { useI18n } from 'vue-i18n'
 import loginApi from '~/api/auth/login-api'
 import sysApi from '~/api/sys/user-center-api'
 import router from '~/router'
+import { useUserStore } from '~/store/modules/user'
 import { setItem } from '~/utils/storage'
 
 // const router = useRouter()
 const { t } = useI18n()
+const { setToken } = useUserStore()
 
 // form表单数据
 const formRef = ref<FormInstance>()
@@ -34,7 +36,7 @@ const submitLogin = async () => {
 
   // 获取token
   const token = await loginApi.login(loginData).finally(() => loginLoading.value = false)
-  setItem('TOKEN', token)
+  setToken(token)
 
   // 获取登录的用户信息
   const loginUser = await loginApi.getLoginUser().finally(() => loginLoading.value = false)
@@ -44,7 +46,7 @@ const submitLogin = async () => {
   const menu = await sysApi.userLoginMenu().finally(() => loginLoading.value = false)
   setItem('MENU', menu)
 
-  router.replace('/dashboard')
+  router.push('/dashboard')
 }
 
 const register = () => {
@@ -53,14 +55,14 @@ const register = () => {
 </script>
 
 <template>
-  <div class="login-form-wrapper">
-    <div class="login-form-title">
+  <div class="login-wrapper">
+    <div class="login-title">
       {{ $t('login.form.title') }}
     </div>
-    <div class="login-form-sub-title">
+    <div class="login-sub-title">
       {{ $t('login.form.subTitle') }}
     </div>
-    <div class="login-form-error-msg" />
+    <div class="login-error-msg" />
     <el-form ref="formRef" :model="form" :rules="rules">
       <el-form-item prop="username">
         <el-input
@@ -83,8 +85,8 @@ const register = () => {
           </template>
         </el-input>
       </el-form-item>
-      <el-space class="login-form-actions" :size="16" direction="vertical" fill>
-        <div class="login-form-password-actions">
+      <el-space class="login-actions" :size="16" direction="vertical" fill>
+        <div class="login-password-actions">
           <el-checkbox>{{ $t('login.form.rememberPassword') }}</el-checkbox>
           <el-button link>
             {{ $t('login.form.forgetPassword') }}
@@ -93,7 +95,7 @@ const register = () => {
         <el-button type="primary" :loading="loginLoading" @click="submitLogin">
           {{ $t('login.form.login') }}
         </el-button>
-        <el-button link long class="login-form-register-btn" @click="register">
+        <el-button link long class="login-register-btn" @click="register">
           {{ $t('login.form.register') }}
         </el-button>
       </el-space>
@@ -102,35 +104,32 @@ const register = () => {
 </template>
 
 <style lang="scss" scoped>
-.login-form {
-  &-wrapper {
-    width: 320px;
-  }
-
-  &-title {
+.login-wrapper {
+  width: 320px;
+  .login-title {
     color: #1d2129;
     font-weight: 500;
     font-size: 24px;
     line-height: 32px;
   }
 
-  &-sub-title {
+  .login-sub-title {
     color: #86909c;
     font-size: 16px;
     line-height: 24px;
   }
 
-  &-error-msg {
+  .login-error-msg {
     height: 32px;
     color: red;
     line-height: 32px;
   }
 
-  &-actions {
+  .login-actions {
     width: 100%;
   }
 
-  &-password-actions {
+  .login-password-actions {
     display: flex;
     justify-content: space-between;
   }

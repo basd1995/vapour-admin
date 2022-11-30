@@ -6,7 +6,7 @@
     <b> vapour-admin </b>
     &nbsp;&nbsp;
     <p>
-      开源仓库，仅用于学习用途。 ⓒ Copyright caosong 2022
+      仅用于学习用途。 ⓒ Copyright caosong 2022
     </p>
   </el-footer>
 </template>

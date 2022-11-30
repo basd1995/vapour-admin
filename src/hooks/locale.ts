@@ -1,16 +1,17 @@
 import { useI18n } from 'vue-i18n'
+import { setItem } from '~/utils/storage'
 
-export default function useLocale() {
+export default function useLanguage() {
   const i18 = useI18n()
-  const currentLocale = computed(() => {
+  const currentLanguage = computed(() => {
     return i18.locale.value
   })
-  const changeLocale = (value: string) => {
+  const setLanguage = (value: string) => {
     i18.locale.value = value
-    localStorage.setItem('vapour-locale', value)
+    setItem('vapour-locale', value)
   }
   return {
-    currentLocale,
-    changeLocale,
+    currentLanguage,
+    setLanguage,
   }
 }
